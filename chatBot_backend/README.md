@@ -20,3 +20,10 @@ curl -X GET \
 here Text is Msg to bot and from help to manage context of the user. you can pass any string here.
 
 to get welcome msg from bot pass "" {empty} string in Text
+
+
+# live app
+
+```
+https://lemon-mousy-timer.glitch.me/bot?Text=good%20bye&From=parth
+```
