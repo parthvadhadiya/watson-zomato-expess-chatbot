@@ -1,0 +1,664 @@
+{
+  "intents": [
+    {
+      "intent": "dine",
+      "examples": [
+        {
+          "text": "suggest some good place for dinner"
+        },
+        {
+          "text": "i want to go out for a dinner"
+        },
+        {
+          "text": "help me with my dine"
+        },
+        {
+          "text": "tell me some dine"
+        },
+        {
+          "text": "what are the best to dine in my city"
+        },
+        {
+          "text": "can you suggest some place for dine"
+        },
+        {
+          "text": "suggest me some place for dine"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "find_restaurant",
+      "examples": [
+        {
+          "text": "Find some restaurants"
+        },
+        {
+          "text": "i am hungry, suggest some good place."
+        },
+        {
+          "text": "any good place to eat"
+        },
+        {
+          "text": "i want to eat something"
+        },
+        {
+          "text": "help with some restaurants"
+        },
+        {
+          "text": "suggest a restaurant."
+        },
+        {
+          "text": "i am hungry"
+        }
+      ],
+      "description": "user want to find some restaurant"
+    },
+    {
+      "intent": "hello",
+      "examples": [
+        {
+          "text": "yo"
+        },
+        {
+          "text": "hi there"
+        },
+        {
+          "text": "hei"
+        },
+        {
+          "text": "good afternoon"
+        },
+        {
+          "text": "good morning"
+        },
+        {
+          "text": "hey"
+        },
+        {
+          "text": "how are you"
+        },
+        {
+          "text": "hello"
+        }
+      ],
+      "description": "this is greetings intent"
+    },
+    {
+      "intent": "asking_who",
+      "examples": [
+        {
+          "text": "tell me about yourself"
+        },
+        {
+          "text": "are you noob"
+        },
+        {
+          "text": "who"
+        },
+        {
+          "text": "how do you know about this information"
+        },
+        {
+          "text": "who are you"
+        },
+        {
+          "text": "you"
+        }
+      ],
+      "description": "this show info of the bot"
+    },
+    {
+      "intent": "bye",
+      "examples": [
+        {
+          "text": "thnks"
+        },
+        {
+          "text": "good bye"
+        },
+        {
+          "text": "bye"
+        },
+        {
+          "text": "thank you for help"
+        },
+        {
+          "text": "good bye my boy"
+        },
+        {
+          "text": "oh thanks"
+        },
+        {
+          "text": "thank you"
+        },
+        {
+          "text": "have a nice day"
+        }
+      ],
+      "description": "this is for good bye"
+    },
+    {
+      "intent": "cuisine",
+      "examples": [
+        {
+          "text": "american"
+        },
+        {
+          "text": "gujarati"
+        },
+        {
+          "text": "mexican"
+        },
+        {
+          "text": "cuisine"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "my_name",
+      "examples": [
+        {
+          "text": "myself"
+        },
+        {
+          "text": "my name is"
+        }
+      ],
+      "description": "user intro name"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-person",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "cuisine",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "mexican",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "chiness",
+          "synonyms": [
+            "chinese"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Arabian",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "italian",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Afghan",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Gujarati",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "American",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Bakery",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Kashmiri",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "webhooks": [
+    {
+      "url": "https://eu-gb.functions.cloud.ibm.com/api/v1/web/parthvadhadiya66%40gmail.com_dev/default/myZomato.json",
+      "name": "main_webhook",
+      "headers": []
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "which cuisine?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_8_1589468333678",
+      "event_name": "focus",
+      "dialog_node": "handler_5_1589468333689",
+      "previous_sibling": "handler_10_1589468333689"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1589468333678",
+      "context": {
+        "cuisine": "@cuisine"
+      },
+      "conditions": "@cuisine",
+      "event_name": "input",
+      "dialog_node": "handler_10_1589468333689"
+    },
+    {
+      "type": "slot",
+      "parent": "node_1_1589463641726",
+      "variable": "$person",
+      "dialog_node": "slot_5_1589463675109"
+    },
+    {
+      "type": "slot",
+      "parent": "node_9_1589352756936",
+      "variable": "$person",
+      "dialog_node": "slot_8_1589352767079"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "please provide your name"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_8_1589352767079",
+      "event_name": "focus",
+      "dialog_node": "handler_9_1589352767106",
+      "previous_sibling": "handler_3_1589352767106"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1589352767079",
+      "context": {
+        "person": "@sys-person"
+      },
+      "conditions": "@sys-person",
+      "event_name": "input",
+      "dialog_node": "handler_3_1589352767106"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_6_1589350194264",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1589350194292",
+      "previous_sibling": "handler_4_1589350194292"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_6_1589350194264",
+      "event_name": "input",
+      "dialog_node": "handler_4_1589350194292"
+    },
+    {
+      "type": "slot",
+      "parent": "Welcome",
+      "dialog_node": "slot_6_1589350194264",
+      "previous_sibling": "node_9_1589352756936"
+    },
+    {
+      "type": "frame",
+      "title": "name node",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello $person, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "conditions": "@sys-person",
+      "dialog_node": "node_9_1589352756936"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Here is  a five top rated $cuisine restaurants in order of its rating ,   $webhook_result_1.message"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_3_1589360240447",
+      "conditions": "$webhook_result_1",
+      "dialog_node": "response_10_1589468397664",
+      "previous_sibling": "handler_1_1589529733382"
+    },
+    {
+      "type": "slot",
+      "parent": "node_3_1589360240447",
+      "variable": "$cuisine",
+      "dialog_node": "slot_8_1589468333678",
+      "previous_sibling": "response_4_1589468398664"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Something wrong with webhook"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_3_1589360240447",
+      "conditions": "anything_else",
+      "dialog_node": "response_4_1589468398664",
+      "previous_sibling": "response_10_1589468397664"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "which cuisine would you like to enjoy? "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1589360240447",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1589529733382"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Error in Getting data"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_7_1589443405957",
+      "conditions": "anything_else",
+      "dialog_node": "response_1_1589545376561",
+      "previous_sibling": "response_10_1589545375245"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "$webhook_result_2.message"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_7_1589443405957",
+      "conditions": "$webhook_result_2",
+      "dialog_node": "response_10_1589545375245"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Enter you name."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_5_1589463675109",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1589463675174",
+      "previous_sibling": "handler_8_1589463675174"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1589463675109",
+      "context": {
+        "person": "@sys-person"
+      },
+      "conditions": "@sys-person",
+      "event_name": "input",
+      "dialog_node": "handler_8_1589463675174"
+    },
+    {
+      "type": "standard",
+      "title": "goodBye",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "The pleasure is always mine, when it comes to food always remember, Zomato is here to help !"
+              },
+              {
+                "text": "happy to help.. good bye"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#bye",
+      "dialog_node": "node_9_1589443574617",
+      "previous_sibling": "node_1_1589463641726"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_2_1589464348655",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "frame",
+      "title": "users name",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello $person, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#my_name",
+      "dialog_node": "node_1_1589463641726",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Who are you",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I am a zomato’s virtual assistant that helps you find the best restaurants."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#asking_who",
+      "dialog_node": "node_5_1589310527993",
+      "previous_sibling": "node_3_1589360240447"
+    },
+    {
+      "type": "frame",
+      "title": "find restaurant",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "cuisine": "$cuisine"
+          },
+          "result_variable": "webhook_result_1"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#find_restaurant || @cuisine",
+      "dialog_node": "node_3_1589360240447",
+      "previous_sibling": "node_7_1589443405957"
+    },
+    {
+      "type": "standard",
+      "title": "suggestion_dine",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "cuisine": "dine"
+          },
+          "result_variable": "webhook_result_2"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#dine",
+      "dialog_node": "node_7_1589443405957",
+      "previous_sibling": "node_9_1589443574617"
+    },
+    {
+      "type": "standard",
+      "title": "General Greetings",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi, I am fine. How may i help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#hello",
+      "dialog_node": "node_2_1589464348655",
+      "previous_sibling": "node_5_1589310527993"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello I am zomato assistant, let's start our conversation with your name."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [
+    {
+      "text": "my name is maitry"
+    }
+  ],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": false
+  },
+  "learning_opt_out": false,
+  "name": "zometo bot",
+  "language": "en",
+  "description": "this bot help users to find best place to eat or order"
+}
