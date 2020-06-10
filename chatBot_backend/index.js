@@ -1,9 +1,10 @@
 const AssistantV1 = require('ibm-watson/assistant/v1');
 const { IamAuthenticator } = require('ibm-watson/auth');
 var express = require('express');
-
+var cors = require('cors')
 
 var app = express();
+app.use(cors())
 const workspaceId = '0eb7b295-a6ee-4c2b-8e8d-81992785a284'
 var contexts = [];
 const messageAsync = function (text, context) {
