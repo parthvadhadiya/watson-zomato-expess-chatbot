@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ChatBox from './components/ChatBox.vue'
+import ChatBox from './components/ChatBox1.vue'
 
 export default {
   name: 'App',
