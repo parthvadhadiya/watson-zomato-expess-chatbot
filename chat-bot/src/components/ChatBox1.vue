@@ -2,10 +2,10 @@
   <section class="chat-box">
     <main class="page__main">
     <div class="block--background">
-      <div class="chatbot__overview">
+      <div class="chatbot__overview" ref="chatbox">
         <ul class="chatlist">
         <li
-          class="bot__output bot__output--standard"
+          
           v-for="(message, idx) in messages"
           :key="idx"
           :class="message.author"
@@ -22,7 +22,6 @@
            <textarea placeholder="Talk to me!"
             class="chatbox" 
             name="chatbox" 
-            minlength="2"
             v-model="message"
             @keyup.enter="sendMessage"
             />
@@ -47,7 +46,7 @@ export default {
   
       this.messages.push({
         text: message,
-        author: 'client'
+        author: 'userInput'
       })
 
       this.message = ''
@@ -56,11 +55,13 @@ export default {
       .then(res => {
         this.messages.push({
           text: res.data.body,
-          author: 'server'
+          author: 'bot__output'
         })
 
         this.$nextTick(() => {
-          this.$refs.chatbox.scrollTop = this.$refs.chatbox.scrollHeight
+          var container = this.$el.querySelector(".chatlist");
+          container.scrollTop = container.scrollHeight;
+          // this.$refs.chatbox.scrollTop = this.$refs.chatbox.scrollHeight
         })
       })
     }
@@ -141,7 +142,14 @@ body {
   background-color: #363636;
 }
 
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
 .chatbot__overview {
+  overflow: scroll;
+  margin-bottom: 1px;
   background-color: #363636;
   display: flex;
   flex-flow: row nowrap;
@@ -196,41 +204,43 @@ body {
   animation-iteration-count: 1;
   animation-play-state: paused;
   animation-fill-mode: forwards;
+  // display: none;
+  // animation-delay: 600ms;
+  // animation-play-state: running;
 }
-.chatlist .bot__output:last-child {
-  display: none;
-}
-.chatlist .bot__command {
-  color: #f5f5f5;
-  color: #27ae60;
-  font-weight: 600;
-  padding: 0.1em;
-}
-.chatlist .bot__output:nth-child(1) {
+// .chatlist .server:last-child {
+//   display: none;
+// }
+
+.chatlist .bot__output {
   animation-delay: 600ms;
   animation-play-state: running;
 }
-.chatlist .bot__output:nth-child(2) {
-  animation-delay: 1200ms;
-  animation-play-state: running;
-}
-.chatlist .bot__output:nth-child(3) {
-  animation-delay: 1800ms;
-  animation-play-state: running;
-}
-.chatlist .bot__output--standard:last-child {
-  display: block;
-}
-.chatlist .bot__output--failed {
-  display: block !important;
-}
-.chatlist .bot__output--second-sentence {
-  display: block;
-}
-.chatlist .bot__outputImage {
-  max-width: 16em;
-  height: 12em;
-}
+// .chatlist .bot__output:nth-child(2) {
+//   animation-delay: 1200ms;
+//   animation-play-state: running;
+// }
+// .chatlist .bot__output:nth-child(3) {
+//   animation-delay: 1800ms;
+//   animation-play-state: running;
+// }
+// .chatlist .bot__output:nth-child(4) {
+//   animation-delay: 1800ms;
+//   animation-play-state: running;
+// }
+// .chatlist .bot__output--standard:last-child {
+//   display: block;
+// }
+// .chatlist .bot__output--failed {
+//   display: block !important;
+// }
+// .chatlist .bot__output--second-sentence {
+//   display: block;
+// }
+// .chatlist .bot__outputImage {
+//   max-width: 16em;
+//   height: 12em;
+// }
 
 @keyframes animateBubble {
   0% {
@@ -329,14 +339,6 @@ input[type="submit"]:hover {
   color: #fff;
 }
 
-.input__nested-list {
-  list-style: disc;
-  list-style-position: inside;
-  padding: 0.5em;
-}
-.input__nested-list:first-child {
-  padding-top: 1em;
-}
 
 .input__nested-link {
   color: #2ecc71;
