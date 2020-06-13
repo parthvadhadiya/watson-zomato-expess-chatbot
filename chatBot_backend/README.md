@@ -1,8 +1,6 @@
 ## Back-End
 -  An ExpressJs server that uses watson NLP engine and zometoWrapper API to get restaurant details. 
 
-![zometoWrapper.js] (https://github.com/parthvadhadiya/watson-zomato-expess-chatbot/blob/master/zometoWrapper.js)
-
 ### How to run back-end
 
 ```

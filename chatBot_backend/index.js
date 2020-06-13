@@ -7,16 +7,7 @@ var app = express();
 app.use(cors())
 const workspaceId = '0eb7b295-a6ee-4c2b-8e8d-81992785a284'
 var contexts = [];
-const messageAsync = function (text, context) {
-    const payload = {
-      workspaceId: '0eb7b295-a6ee-4c2b-8e8d-81992785a284',
-      input: {
-        text: text,
-      },
-      context: context,
-    };
-    return assistant.message(payload);
-  };
+
 
 
 app.get('/bot', async function(req, res) {
