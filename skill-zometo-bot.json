@@ -58,28 +58,19 @@
       "intent": "hello",
       "examples": [
         {
-          "text": "yo"
-        },
-        {
-          "text": "hi there"
-        },
-        {
-          "text": "hei"
-        },
-        {
-          "text": "good afternoon"
-        },
-        {
-          "text": "good morning"
+          "text": "hello"
         },
         {
           "text": "hey"
         },
         {
-          "text": "how are you"
+          "text": "hei"
         },
         {
-          "text": "hello"
+          "text": "hi there"
+        },
+        {
+          "text": "yo"
         }
       ],
       "description": "this is greetings intent"
@@ -88,13 +79,13 @@
       "intent": "asking_who",
       "examples": [
         {
-          "text": "tell me about yourself"
+          "text": "who"
         },
         {
           "text": "are you noob"
         },
         {
-          "text": "who"
+          "text": "tell me about you"
         },
         {
           "text": "how do you know about this information"
@@ -104,36 +95,42 @@
         },
         {
           "text": "you"
+        },
+        {
+          "text": "tell me about yourself"
         }
       ],
       "description": "this show info of the bot"
     },
     {
+      "intent": "greetings",
+      "examples": [
+        {
+          "text": "how's going on"
+        },
+        {
+          "text": "whats going on"
+        },
+        {
+          "text": "how do you do today"
+        },
+        {
+          "text": "how are you"
+        }
+      ],
+      "description": "greetings"
+    },
+    {
       "intent": "bye",
       "examples": [
         {
-          "text": "thnks"
-        },
-        {
-          "text": "good bye"
+          "text": "good bye my boy"
         },
         {
           "text": "bye"
         },
         {
-          "text": "thank you for help"
-        },
-        {
-          "text": "good bye my boy"
-        },
-        {
-          "text": "oh thanks"
-        },
-        {
-          "text": "thank you"
-        },
-        {
-          "text": "have a nice day"
+          "text": "good bye"
         }
       ],
       "description": "this is for good bye"
@@ -142,39 +139,22 @@
       "intent": "cuisine",
       "examples": [
         {
-          "text": "american"
+          "text": "cuisine"
         },
         {
-          "text": "gujarati"
+          "text": "american"
         },
         {
           "text": "mexican"
         },
         {
-          "text": "cuisine"
+          "text": "gujarati"
         }
       ],
       "description": ""
-    },
-    {
-      "intent": "my_name",
-      "examples": [
-        {
-          "text": "myself"
-        },
-        {
-          "text": "my name is"
-        }
-      ],
-      "description": "user intro name"
     }
   ],
   "entities": [
-    {
-      "entity": "sys-person",
-      "values": [],
-      "fuzzy_match": true
-    },
     {
       "entity": "cuisine",
       "values": [
@@ -270,44 +250,6 @@
       "dialog_node": "handler_10_1589468333689"
     },
     {
-      "type": "slot",
-      "parent": "node_1_1589463641726",
-      "variable": "$person",
-      "dialog_node": "slot_5_1589463675109"
-    },
-    {
-      "type": "slot",
-      "parent": "node_9_1589352756936",
-      "variable": "$person",
-      "dialog_node": "slot_8_1589352767079"
-    },
-    {
-      "type": "event_handler",
-      "output": {
-        "text": {
-          "values": [
-            "please provide your name"
-          ],
-          "selection_policy": "sequential"
-        }
-      },
-      "parent": "slot_8_1589352767079",
-      "event_name": "focus",
-      "dialog_node": "handler_9_1589352767106",
-      "previous_sibling": "handler_3_1589352767106"
-    },
-    {
-      "type": "event_handler",
-      "output": {},
-      "parent": "slot_8_1589352767079",
-      "context": {
-        "person": "@sys-person"
-      },
-      "conditions": "@sys-person",
-      "event_name": "input",
-      "dialog_node": "handler_3_1589352767106"
-    },
-    {
       "type": "event_handler",
       "output": {},
       "parent": "slot_6_1589350194264",
@@ -324,28 +266,7 @@
     {
       "type": "slot",
       "parent": "Welcome",
-      "dialog_node": "slot_6_1589350194264",
-      "previous_sibling": "node_9_1589352756936"
-    },
-    {
-      "type": "frame",
-      "title": "name node",
-      "output": {
-        "generic": [
-          {
-            "values": [
-              {
-                "text": "Hello $person, How can I help you?"
-              }
-            ],
-            "response_type": "text",
-            "selection_policy": "sequential"
-          }
-        ]
-      },
-      "parent": "Welcome",
-      "conditions": "@sys-person",
-      "dialog_node": "node_9_1589352756936"
+      "dialog_node": "slot_6_1589350194264"
     },
     {
       "type": "response_condition",
@@ -433,32 +354,6 @@
       "dialog_node": "response_10_1589545375245"
     },
     {
-      "type": "event_handler",
-      "output": {
-        "text": {
-          "values": [
-            "Enter you name."
-          ],
-          "selection_policy": "sequential"
-        }
-      },
-      "parent": "slot_5_1589463675109",
-      "event_name": "focus",
-      "dialog_node": "handler_3_1589463675174",
-      "previous_sibling": "handler_8_1589463675174"
-    },
-    {
-      "type": "event_handler",
-      "output": {},
-      "parent": "slot_5_1589463675109",
-      "context": {
-        "person": "@sys-person"
-      },
-      "conditions": "@sys-person",
-      "event_name": "input",
-      "dialog_node": "handler_8_1589463675174"
-    },
-    {
       "type": "standard",
       "title": "goodBye",
       "output": {
@@ -470,6 +365,12 @@
               },
               {
                 "text": "happy to help.. good bye"
+              },
+              {
+                "text": "Thank you for choosing us"
+              },
+              {
+                "text": "have a nice day. stay safe. good bye"
               }
             ],
             "response_type": "text",
@@ -479,7 +380,7 @@
       },
       "conditions": "#bye",
       "dialog_node": "node_9_1589443574617",
-      "previous_sibling": "node_1_1589463641726"
+      "previous_sibling": "node_7_1592473608099"
     },
     {
       "type": "standard",
@@ -509,14 +410,14 @@
       "disambiguation_opt_out": true
     },
     {
-      "type": "frame",
-      "title": "users name",
+      "type": "standard",
+      "title": "general greetings",
       "output": {
         "generic": [
           {
             "values": [
               {
-                "text": "Hello $person, How can I help you?"
+                "text": "I am fine, Thank you."
               }
             ],
             "response_type": "text",
@@ -524,8 +425,8 @@
           }
         ]
       },
-      "conditions": "#my_name",
-      "dialog_node": "node_1_1589463641726",
+      "conditions": "#greetings",
+      "dialog_node": "node_7_1592473608099",
       "previous_sibling": "Welcome"
     },
     {
@@ -566,7 +467,7 @@
           "mcr": true
         }
       },
-      "conditions": "#find_restaurant || @cuisine",
+      "conditions": "#find_restaurant",
       "dialog_node": "node_3_1589360240447",
       "previous_sibling": "node_7_1589443405957"
     },
@@ -594,13 +495,16 @@
     },
     {
       "type": "standard",
-      "title": "General Greetings",
+      "title": "General hello",
       "output": {
         "generic": [
           {
             "values": [
               {
-                "text": "Hi, I am fine. How may i help you?"
+                "text": "Hi,  How may I help you?"
+              },
+              {
+                "text": "hello, how can I help you?"
               }
             ],
             "response_type": "text",
@@ -620,7 +524,7 @@
           {
             "values": [
               {
-                "text": "Hello I am zomato assistant, let's start our conversation with your name."
+                "text": "Hello, I am a zomato assistant. how may I help you?"
               }
             ],
             "response_type": "text",
