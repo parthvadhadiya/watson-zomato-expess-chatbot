@@ -10,3 +10,6 @@ new Vue({
 
 
 Vue.prototype.$axios = axios
+window.onbeforeunload = function(){
+  axios.get(`http://localhost:5000/bot?Text=bye&From=parth`)
+} 

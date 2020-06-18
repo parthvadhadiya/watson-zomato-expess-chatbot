@@ -64,7 +64,9 @@ export default {
           // this.$refs.chatbox.scrollTop = this.$refs.chatbox.scrollHeight
         })
       })
-    }
+      
+
+    },
   }
 }
 </script>
